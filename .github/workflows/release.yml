@@ -5,8 +5,11 @@ on:
     tags:
       - "v*.*.*"
 
+permissions:
+  contents: write
+
 jobs:
-  publish:
+  release:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,7 +20,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install build & twine
+      - name: Install build tools
         run: |
           python -m pip install --upgrade pip
           pip install build twine
@@ -32,3 +35,8 @@ jobs:
           TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
         run: |
           twine upload dist/*
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
