@@ -71,7 +71,7 @@ Regular install (from PyPI)
 pip install product-extractor
 ```
 
-▶️ Usage
+## ▶️ Usage
 
 1️⃣ CLI
 
