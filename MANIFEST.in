@@ -1,0 +1,2 @@
+include README.md
+recursive-include product_extractor/schemas *.json
